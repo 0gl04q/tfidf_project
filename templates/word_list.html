@@ -1,0 +1,8 @@
+{% for word in word_list %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ word.name }}</td>
+        <td>{{ word.tf }}</td>
+        <td>{{ word.idf }}</td>
+    </tr>
+{% endfor %}

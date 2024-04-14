@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с файлом</title>
+    {# Load the django_bootstrap5 library #}
+    {% load django_bootstrap5 %}
+
+    {# Load CSS and JavaScript separately#}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+<div class="container mt-4">
+    <form hx-encoding="multipart/form-data"
+          hx-post="{% url 'upload_file' %}"
+          hx-target="#table-body"
+          hx-swap="innerHTML"
+          hx-confirm="Добавить файл?">
+
+        {% bootstrap_form form=form %}
+        <button class="form-control">Отправить</button>
+    </form>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Слово</th>
+                <th scope="col">TF</th>
+                <th scope="col">IDF</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+</div>
+
+
+<script src="https://unpkg.com/htmx.org@1.9.4"></script>
+</body>
+</html>
